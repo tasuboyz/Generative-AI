@@ -56,6 +56,7 @@ class BOT():
         self.dp.callback_query(F.data == "yes")(self.send_image_to_channel)
         self.dp.callback_query(F.data == "cancel")(self.cancel)
         self.dp.callback_query(F.data == "give_to_user")(self.admin_panel.give_to_user)
+        self.dp.callback_query(F.data == "reset_competition")(self.admin_panel.reset_contest)
 
         self.dp.message(F.from_user.id == self.admin_id)(self.admin_panel.admin_command)
 
