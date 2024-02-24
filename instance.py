@@ -18,3 +18,4 @@ else:
     bot = Bot(bot_token, parse_mode=ParseMode.HTML)
 
 is_running = True
+blocked_users = {}
