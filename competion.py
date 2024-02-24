@@ -37,7 +37,7 @@ class Win_Check:
                 submission_time = Database().get_first_submission_of_month()
                 if submission_time:
 
-                    submission_time = datetime.strptime(submission_time, '%Y-%m-%d %H:%M:%S.%f')
+                    submission_time = datetime.strptime(submission_time, '%Y-%m-%d %H:%M:%S')
                     end_time = submission_time + timedelta(hours=self.contest_time)
                 
                     current_time = datetime.now()
