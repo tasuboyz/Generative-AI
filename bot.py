@@ -2,7 +2,7 @@ import config
 
 from aiogram import F, Bot, Dispatcher, Router, types
 from aiogram.fsm.context import FSMContext
-from aiogram.filters import CommandStart
+from aiogram.filters import CommandStart, Command
 from aiogram.types import Message, CallbackQuery
 from user import UserInfo
 import instance
@@ -39,10 +39,12 @@ class BOT():
         self.channel_id = f"@{self.channel_username}"
         self.channel_url = f"https://t.me/{self.channel_username}"
         self.contest_time = config.contest_time
+        self.blocked_users = instance.blocked_users 
         #command
         self.dp.message(CommandStart())(self.command_start_handler)
+        self.dp.message(Command('user'))(self.admin_panel.admin_keyboard)
         self.dp.message(F.text)(self.recive_prompts)
-        self.dp.callback_query(F.data == "send")(self.info_of_contest)
+        self.dp.callback_query(F.data == "send")(self.send_image_to_channel)
         self.dp.callback_query(F.data == "1.0")(self.voting.give_star)
         self.dp.callback_query(F.data == "2.0")(self.voting.give_star)
         self.dp.callback_query(F.data == "3.0")(self.voting.give_star)
@@ -53,6 +55,7 @@ class BOT():
         self.dp.callback_query(F.data == "token")(self.give_referral)
         self.dp.callback_query(F.data == "yes")(self.send_image_to_channel)
         self.dp.callback_query(F.data == "cancel")(self.cancel)
+        self.dp.callback_query(F.data == "give_to_user")(self.admin_panel.give_to_user)
 
         self.dp.message(F.from_user.id == self.admin_id)(self.admin_panel.admin_command)
 
@@ -95,11 +98,15 @@ class BOT():
         info = UserInfo(callback)
         user_id = info.user_id
         language_code = info.language
-        test = f"`https://t.me/TasuAdmin_Bot?start={user_id}`"
-        #referral = f"`https://t\\.me/AIGenerativeTasuBot\\?start={user_id}`"      
-        token_referral = Language().give_referral(language_code, test)
-        await callback.message.answer(text=token_referral, parse_mode=ParseMode.MARKDOWN)
-        pass
+        try:
+            #test = f"`https://t.me/TasuAdmin_Bot?start={user_id}`"
+            referral = f"`https://t.me/AIGenerativeTasuBot?start={user_id}`"      
+            token_referral = Language().give_referral(language_code, referral)
+            await callback.message.answer(text=token_referral, parse_mode=ParseMode.MARKDOWN)
+            pass
+        except Exception as ex:
+            await self.bot.send_message(self.admin_id, f"{ex}")
+            logger.error(ex)
 
     async def recive_prompts(self, message: Message):        
         info = UserInfo(message)
@@ -107,6 +114,9 @@ class BOT():
         chat_id = info.chat_id
         language_code = info.language
         try:
+            if user_id in self.blocked_users:
+                await self.bot.send_message(self.admin_id, f"{user_id}: Blocked")
+                return
             total_token = Database().user_token(user_id)
             if total_token > 0:
                 
@@ -114,7 +124,8 @@ class BOT():
                 message_wait = await message.answer(waiting)
                 
                 prompt = message.text
-                image_url = self.openai.prompt_to_image(prompt)                     
+                image_url = self.openai.prompt_to_image(prompt)         
+                self.blocked_users[user_id] = True            
 
                 keyboard = Keyboard_Manager().send_keyboard(language_code)
                 await self.bot.send_photo(chat_id=user_id, photo=image_url, caption=f"`{prompt}`\n(0)", reply_markup=keyboard, parse_mode=ParseMode.MARKDOWN)
@@ -125,15 +136,16 @@ class BOT():
                 not_token = Language().have_not_token(language_code)
                 await message.reply(not_token, reply_markup=keyboard)
                 image_url = False
+            await self.bot.delete_message(chat_id, message_wait.message_id) 
         except Exception as ex:
             error_occurred = Language().error_generation(language_code)
             await message.reply(error_occurred)
             logger.error(ex)
             await self.bot.send_message(self.admin_id, f"Errore {user_id}: {ex}")
         finally:
-            if image_url:
-                await self.bot.delete_message(chat_id, message_wait.message_id) 
-
+            if user_id in self.blocked_users:
+                del self.blocked_users[user_id]
+                
     async def info_of_contest(self, callback_query: CallbackQuery):
         info = UserInfo(callback_query)
         user_id = info.user_id      
@@ -142,14 +154,14 @@ class BOT():
         db = Database()
         submission_time = db.get_first_submission_of_month()
         if submission_time is not None:
-            submission_time = datetime.strptime(submission_time, '%Y-%m-%d %H:%M:%S.%f')
+            submission_time = datetime.strptime(submission_time, '%Y-%m-%d %H:%M:%S')
             estimated_time = submission_time + timedelta(hours=self.contest_time)
             info_of_contest = Language().send_for_contest(language_code, estimated_time)
         else:
             info_of_contest = Language().send_for_contest_v2(language_code)
         
         keyboard = self.keyboard.yes_or_no(language_code)
-        await callback_query.message.answer(info_of_contest, reply_markup=keyboard)
+        await self.bot.send_message(user_id, info_of_contest, reply_markup=keyboard)
         return
 
     async def send_image_to_channel(self, callback_query: CallbackQuery):
@@ -162,13 +174,24 @@ class BOT():
             if result:
                 
                 submission_time = db.get_first_submission_of_month()
-                submission_time = datetime.strptime(submission_time, '%Y-%m-%d %H:%M:%S.%f')
+                submission_time = datetime.strptime(submission_time, '%Y-%m-%d %H:%M:%S')
+                
                 estimated_time = submission_time + timedelta(hours=self.contest_time)
                 wait_next_text = Language().wait_for_next(language_code, estimated_time)
                 await callback_query.message.reply(f"{wait_next_text}")
                 return
             else:
-                await self.execute_when_queue_clears(callback_query)
+                current_datetime = datetime.now()
+                current_datetime = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
+                keyboard = Keyboard_Manager().star_keyboard()
+                photo = await callback_query.message.send_copy(self.channel_id, reply_markup=keyboard)
+                photo_id = photo.message_id
+                channel_link = f'<a href="https://t.me/{self.channel_username}/{photo_id}">💣</a>'
+                original = info.caption_text
+                await callback_query.message.edit_caption(f''' ''')
+                await callback_query.message.reply(f"Succesfully sended! {channel_link}")                   
+                
+                db.insert_concurrent(user_id, photo_id, current_datetime)
         except Exception as ex:
             await self.bot.send_message(self.admin_id, f"{ex}")
             logger.error(ex)
