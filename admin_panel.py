@@ -6,12 +6,14 @@ from aiogram.enums import ParseMode
 from chat_keyboards import Keyboard_Manager
 from state import Form
 from aiogram.fsm.context import FSMContext
+from db import Database
+from logger_config import logger
 
 class ChannelManager():
     def __init__(self):
         self.channel_id = -1002100731393
         self.keyboards = Keyboard_Manager()
-
+        self.db = Database()
         pass
 
     async def admin_command(self, message: types.Message, state: FSMContext):
@@ -48,3 +50,29 @@ class ChannelManager():
         msg = await bot.edit_message_reply_markup(chat_id=chat_id, message_id=message_id, reply_markup=None)
         await msg.send_copy(self.channel_id)
         return
+    
+    async def admin_keyboard(self, message: types.Message):
+        info = UserInfo(message)
+        user_id = info.user_id
+        if user_id == admin_id:
+            keyboard = self.keyboards.admin_keyboard()
+            await message.answer("Panel:", reply_markup=keyboard)
+        return
+    
+    async def give_to_user(self, callback_query: types.CallbackQuery):
+        info = UserInfo(callback_query)
+        data = info.user_data
+        try:
+            async for user_id in Database().get_users():
+                token = self.db.user_token(user_id[0])
+                token += 10               
+                try:
+                    await bot.send_message(user_id[0], "Owner give you +10🪙, thanks for testing!")
+                    self.db.update_user_token(token, user_id[0])
+                except Exception as ex:
+                    await bot.send_message(admin_id, f"{ex}")
+                    logger.error(ex)
+            return
+        except Exception as ex:
+            await bot.send_message(admin_id, f"{ex}")
+            logger.error(ex)
