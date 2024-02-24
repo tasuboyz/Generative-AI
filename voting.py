@@ -21,15 +21,17 @@ class Voting():
         user_id = info.user_id
         language_code = info.language
         try:
-            user_vote_count = Database().get_vote_count(user_id)
+            user_vote_count = Database().get_vote_count()
             new_text = self.update_text(callback_query)
             if new_text == old_text:
                 you_already_voted = Language().you_already_voted(language_code)
                 await callback_query.answer(you_already_voted)
                 return
-            if user_vote_count % image_vote == 0:
-                    Database().update_user_token(1, user_id)
-                    await self.bot.send_message(user_id, "+1 🪙")
+            if user_vote_count[0] % 10 == 0:
+                    total_token = Database().user_token(user_id)
+                    total_token += 1
+                    Database().update_user_token(total_token, user_id)
+                    await self.bot.send_message(user_id, "You Win +1 🪙")
                     pass
             keyboard = Keyboard_Manager().star_keyboard()
             await self.bot.edit_message_caption(chat_id=info.chat_id, message_id=message_id, caption=new_text, reply_markup=keyboard, parse_mode=ParseMode.MARKDOWN)
@@ -44,7 +46,10 @@ class Voting():
         user_id = info.user_id       
         vote = info.user_data
         text = original.split('\n')[0]
-        info_star = original.split('\n')[1]
+        match = re.search(r'\(\d+\)', original)
+        if match:
+            info_star = match.group()
+        #info_star = original.split('\n')[1]
         split_stars = info_star.split()
         matches = re.findall(r'\d+', info_star)
         if len(matches) >= 2:
