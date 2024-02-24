@@ -5,6 +5,7 @@ from datetime import datetime
 class Database():
     def __init__(self):
         self.conn = sqlite3.connect('voting.db')
+        self.conn2 = sqlite3.connect(f'{config.pay_url}/voting.db')
         self.token = sqlite3.connect(f'{config.pay_url}/paymant.db')
 
         self.c = self.conn.cursor()        
@@ -108,10 +109,18 @@ class Database():
         row_count = self.c.fetchone()[0]
         return row_count
     
-    def get_vote_count(self, user_id):
+    async def get_users(self):
+        self.c.execute(f"SELECT {self.user_id} FROM {self.user_info}")
+        while True:
+            user_id = self.c.fetchone()
+            if user_id is None:
+                break
+            yield user_id     
+    
+    def get_vote_count(self):
         self.c.execute(f"SELECT COUNT({self.user_id}) FROM {self.table_vote}")
-        row_count = self.c.fetchone()[0]
-        return row_count
+        results = self.c.fetchall()
+        return results[0] if results else 0
     
     def write_ids(self):
         self.c.execute(f"SELECT {self.user_id} FROM {self.user_info}")
@@ -186,7 +195,8 @@ class Database():
             return 0
         
     def update_user_token(self, total_token, user_id):
-        self.ctok.execute(f'''UPDATE {self.PAYER} SET {self.total_token} = ? WHERE {self.user_id} = ?''', (total_token, user_id))
+        self.ctok.execute(f"INSERT OR REPLACE INTO {self.PAYER} ({self.user_id}, {self.total_token}) VALUES (?, ?)", (user_id, total_token))
+        #self.ctok.execute(f'''UPDATE {self.PAYER} SET {self.total_token} = ? WHERE {self.user_id} = ?''', (total_token, user_id))
         self.token.commit()
 
 
