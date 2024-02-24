@@ -83,5 +83,6 @@ class Keyboard_Manager:
         keyboard = []
         keyboard.append([InlineKeyboardButton(text="number user", callback_data="user_number"),
                          InlineKeyboardButton(text="give to user", callback_data="give_to_user")])
+        keyboard.append([InlineKeyboardButton(text="Reset competition", callback_data="reset_competition")])
         keyboard = InlineKeyboardMarkup(inline_keyboard=keyboard)
         return keyboard
