@@ -9,46 +9,56 @@ class Language:
         channel = f'<a href="https://t.me/{self.channel_username}">👇</a>'
         eng = (f"\nHello {first_name} 👋, send me a prompt to generate an image!""\n""\nI recommend sending short and simple prompts for better images.""\n"
                     "\nRemember, 1🪙 Token equals one image.""\n""\nTo get new tokens you can:""\n1️⃣ Vote for 10 images for 1 🪙""\n2️⃣ Invite a friend for 3 🪙""\n3️⃣ Win contests to get 20 🪙\n4️⃣Members of the channel https://t.me/tasu_Channel will have +2 🪙"
-                    "\n🛒 Purchase Tokens""\n""\n🥇 Win the contest to get new tokens! Contests last for a week, and you can submit only one image."f"\n🪙 Tokens: {total_token}")
+                    "\n🛒 Purchase Tokens""\n""\n🥇 Win the contest to get new tokens! Contests last for a week, and you can submit only one image."f"\n🪙 Tokens: {total_token}"
+                    "\n@tasu_openai_result")
         if language_code == 'it':
             message = (f"\nCiao {first_name} 👋, inviami un prompt per generare un'immagine!""\n""\nTi consiglio di inviare prompt brevi e non complessi per creare immagini migliori.""\n"
                     "\nRicorda che 1🪙 Token è un'immagine.""\n""\nPer ottenere nuovi token puoi:""\n1️⃣ Votare 10 immagini per 1 🪙""\n2️⃣ Invitare un amico per 3 🪙""\n3️⃣ Vincere i concorsi per ottenere 20 🪙\n4️⃣I membri del canale https://t.me/tasu_Channel avranno + 2 🪙"
-                    "\n🛒 Acquistare i Token""\n""\n🥇 Vinci il concorso per ottenere nuovi token! I concorsi durano una settimana e puoi inviare una sola immagine."f"\n🪙 Token: {total_token}")
+                    "\n🛒 Acquistare i Token""\n""\n🥇 Vinci il concorso per ottenere nuovi token! I concorsi durano una settimana e puoi inviare una sola immagine."f"\n🪙 Token: {total_token}"
+                    "\n@tasu_openai_result")
         elif language_code == 'en':
             message = eng
         elif language_code == 'hi':
             message = (f"नमस्ते {first_name} 👋, मुझे एक प्रॉम्प्ट भेजें ताकि मैं एक छवि उत्पन्न कर सकूं!""\n""\nबेहतर छवियों के लिए छोटे और सरल प्रॉम्प्ट भेजने की सिफारिश की जाती है।""\n"
                     "\nध्यान दें, 1🪙 टोकन एक छवि के बराबर है।""\n""\nनए टोकन प्राप्त करने के लिए आप:""\n1️⃣ 1 🪙 के लिए 10 छवियों के लिए वोट करें""\n2️⃣ 3 🪙 के लिए एक दोस्त को आमंत्रित करें""\n3️⃣ 20 🪙 प्राप्त करने के लिए प्रतियोगिताओं को जीतें\n4️⃣ https://t.me/tasu_Channel चैनल के सदस्यों को +2 🪙"
-                    "\n🛒 टोकन खरीदें""\n""\n🥇 नए टोकन प्राप्त करने के लिए प्रतियोगिता जीतें! प्रतियोगिताएँ एक सप्ताह तक चलती हैं, और आप केवल एक छवि सबमिट कर सकते हैं।"f"\n🪙 टोकन: {total_token}")
+                    "\n🛒 टोकन खरीदें""\n""\n🥇 नए टोकन प्राप्त करने के लिए प्रतियोगिता जीतें! प्रतियोगिताएँ एक सप्ताह तक चलती हैं, और आप केवल एक छवि सबमिट कर सकते हैं।"f"\n🪙 टोकन: {total_token}"
+                    "\n@tasu_openai_result")
         elif language_code == 'es':
             message = (f"Hola {first_name} 👋, ¡envíame un prompt para generar una imagen!""\n""\nTe recomiendo enviar prompts cortos y simples para obtener mejores imágenes.""\n"
                     "\nRecuerda, 1🪙 Token equivale a una imagen.""\n""\nPara obtener nuevos tokens puedes:""\n1️⃣ Votar por 10 imágenes por 1 🪙""\n2️⃣ Invitar a un amigo por 3 🪙""\n3️⃣ Ganar concursos para obtener 20 🪙\n4️⃣Los miembros del canal https://t.me/tasu_Channel tendrán +2 🪙"
-                    "\n🛒 Comprar Tokens""\n""\n🥇 ¡Gana el concurso para obtener nuevos tokens! Los concursos duran una semana y solo puedes enviar una imagen."f"\n🪙 Tokens: {total_token}")
+                    "\n🛒 Comprar Tokens""\n""\n🥇 ¡Gana el concurso para obtener nuevos tokens! Los concursos duran una semana y solo puedes enviar una imagen."f"\n🪙 Tokens: {total_token}"
+                    "\n@tasu_openai_result")
         elif language_code == 'fr':
             message = (f"Bonjour {first_name} 👋, envoyez-moi un prompt pour générer une image!""\n""\nJe recommande d'envoyer des prompts courts et simples pour de meilleures images.""\n"
                     "\nRappelez-vous, 1🪙 Token équivaut à une image.""\n""\nPour obtenir de nouveaux jetons, vous pouvez :""\n1️⃣ Voter pour 10 images pour 1 🪙""\n2️⃣ Inviter un ami pour 3 🪙""\n3️⃣ Gagner des concours pour obtenir 20 🪙\n4️⃣Les membres du canal https://t.me/tasu_Channel auront +2 🪙"
-                    "\n🛒 Acheter des jetons""\n""\n🥇 Gagnez le concours pour obtenir de nouveaux jetons ! Les concours durent une semaine et vous ne pouvez soumettre qu'une seule image."f"\n🪙 Jetons : {total_token}")
+                    "\n🛒 Acheter des jetons""\n""\n🥇 Gagnez le concours pour obtenir de nouveaux jetons ! Les concours durent une semaine et vous ne pouvez soumettre qu'une seule image."f"\n🪙 Jetons : {total_token}"
+                    "\n@tasu_openai_result")
         elif language_code == 'de':
             message = (f"Hallo {first_name} 👋, sende mir einen Prompt, um ein Bild zu generieren!""\n""\nIch empfehle, kurze und einfache Prompts für bessere Bilder zu senden.""\n"
                     "\nDenke daran, 1🪙 Token entspricht einem Bild.""\n""\nUm neue Tokens zu erhalten, kannst du:""\n1️⃣ Für 1 🪙 10 Bilder abstimmen""\n2️⃣ Einen Freund für 3 🪙 einladen""\n3️⃣ Gewinne Wettbewerbe, um 20 🪙 zu erhalten\4️⃣Mitglieder des Kanals https://t.me/tasu_Channel erhalten +2 🪙"
-                    "\n🛒 Tokens kaufen""\n""\n🥇 Gewinne den Wettbewerb, um neue Tokens zu erhalten! Wettbewerbe dauern eine Woche, und du kannst nur ein Bild einreichen."f"\n🪙 Tokens: {total_token}")
+                    "\n🛒 Tokens kaufen""\n""\n🥇 Gewinne den Wettbewerb, um neue Tokens zu erhalten! Wettbewerbe dauern eine Woche, und du kannst nur ein Bild einreichen."f"\n🪙 Tokens: {total_token}"
+                    "\n@tasu_openai_result")
         elif language_code == 'ru':
             message = (f"Привет {first_name} 👋, отправь мне подсказку, чтобы создать изображение!""\n""\nЯ рекомендую отправлять короткие и простые подсказки для лучших изображений.""\n"
                     "\nПомни, что 1🪙 Токен равен одному изображению.""\n""\nЧтобы получить новые токены, ты можешь:""\n1️⃣ Проголосовать за 10 изображений за 1 🪙""\n2️⃣ Пригласить друга за 3 🪙""\n3️⃣ Выиграть конкурсы, чтобы получить 20 🪙\n4️⃣Участники канала https://t.me/tasu_Channel получат +2 🪙"
-                    "\n🛒 Купить Токены""\n""\n🥇 Выиграйте конкурс, чтобы получить новые токены! Конкурсы длится неделю, и вы можете отправить только одно изображение."f"\n🪙 Токены: {total_token}")
+                    "\n🛒 Купить Токены""\n""\n🥇 Выиграйте конкурс, чтобы получить новые токены! Конкурсы длится неделю, и вы можете отправить только одно изображение."f"\n🪙 Токены: {total_token}"
+                    "\n@tasu_openai_result")
         elif language_code == 'uk':
             message = (f"Привіт {first_name} 👋, надішліть мені запит, щоб створити зображення!""\n""\nЯ рекомендую надсилати короткі та прості запити для кращих зображень.""\n"
                     "\nЗапам'ятайте, що 1🪙 Токен дорівнює одному зображенню.""\n""\nЩоб отримати нові токени, ви можете:""\n1️⃣ Проголосувати за 10 зображень за 1 🪙""\n2️⃣ Запросити друга за 3 🪙""\n3️⃣ Вигравати конкурси, щоб отримати 20 🪙\n4️⃣Учасники каналу https://t.me/tasu_Channel отримають +2 🪙"
-                    "\n🛒 Купити Токени""\n""\n🥇 Виграйте конкурс, щоб отримати нові токени! Конкурси тривають тиждень, і ви можете надіслати лише одне зображення."f"\n🪙 Токени: {total_token}")
+                    "\n🛒 Купити Токени""\n""\n🥇 Виграйте конкурс, щоб отримати нові токени! Конкурси тривають тиждень, і ви можете надіслати лише одне зображення."f"\n🪙 Токени: {total_token}"
+                    "\n@tasu_openai_result")
         elif language_code == 'zh':
             message = (f"你好 {first_name} 👋，发送一个提示给我生成一张图片吧！""\n""\n我建议您发送简短且简单的提示以获得更好的图片。""\n"
                     "\n请记住，1🪙 代币等于一张图片。""\n""\n要获取新代币，您可以：""\n1️⃣ 为 1 🪙 投票 10 张图片""\n2️⃣ 邀请一个朋友来 3 🪙""\n3️⃣ 赢得比赛获得 20 🪙\n4️⃣频道 https://t.me/tasu_Channel 的成员将额外获得 +2 🪙"
-                    "\n🛒 购买代币""\n""\n🥇 赢得比赛获得新代币！比赛持续一周，您只能提交一张图片。"f"\n🪙 代币: {total_token}")
+                    "\n🛒 购买代币""\n""\n🥇 赢得比赛获得新代币！比赛持续一周，您只能提交一张图片。"f"\n🪙 代币: {total_token}"
+                    "\n@tasu_openai_result")
         elif language_code == 'ar':
             message = (f"مرحبًا {first_name} 👋، أرسل لي موجِّهًا لإنشاء صورة!""\n""\nأوصي بإرسال موجِّهات قصيرة وبسيطة للحصول على صور أفضل.""\n"
                     "\nتذكّر، 1🪙 توكن يُعادل صورة واحدة.""\n""\nللحصول على توكنات جديدة يمكنك:""\n1️⃣ التصويت على 10 صور مقابل 1 🪙""\n2️⃣ دعوة صديق للحصول على 3 🪙""\n3️⃣ الفوز في المسابقات للحصول على 20 🪙\n4️⃣ سيحصل أعضاء القناة https://t.me/tasu_Channel على +2 🪙 إضافية"
-                    "\n🛒 شراء التوكنات""\n""\n🥇 اربح المسابقة للحصول على توكنات جديدة! تستمر المسابقات لمدة أسبوع، ويمكنك تقديم صورة واحدة فقط."f"\n🪙 التوكنات: {total_token}")
-        else:
+                    "\n🛒 شراء التوكنات""\n""\n🥇 اربح المسابقة للحصول على توكنات جديدة! تستمر المسابقات لمدة أسبوع، ويمكنك تقديم صورة واحدة فقط."f"\n🪙 التوكنات: {total_token}"
+                    "\n@tasu_openai_result")
+        else:       
             message = eng
         return message
         
