@@ -78,3 +78,10 @@ class Keyboard_Manager:
                          InlineKeyboardButton(text=no, callback_data="cancel")])
         keyboard = InlineKeyboardMarkup(inline_keyboard=keyboard)
         return keyboard
+    
+    def admin_keyboard(self):
+        keyboard = []
+        keyboard.append([InlineKeyboardButton(text="number user", callback_data="user_number"),
+                         InlineKeyboardButton(text="give to user", callback_data="give_to_user")])
+        keyboard = InlineKeyboardMarkup(inline_keyboard=keyboard)
+        return keyboard
