@@ -67,7 +67,7 @@ class ChannelManager():
                 token = self.db.user_token(user_id[0])
                 token += 10               
                 try:
-                    await bot.send_message(user_id[0], "Owner give you +10🪙, thanks for testing!")
+                    await bot.send_message(user_id[0], "Owner give you +10🪙, thanks for testing!, The system is not perfect continue to try!")
                     self.db.update_user_token(token, user_id[0])
                 except Exception as ex:
                     await bot.send_message(admin_id, f"{ex}")
@@ -76,3 +76,9 @@ class ChannelManager():
         except Exception as ex:
             await bot.send_message(admin_id, f"{ex}")
             logger.error(ex)
+
+    async def reset_contest(self, callback_query: types.CallbackQuery):
+        db = Database()
+        db.reset_competition()
+        await callback_query.message.answer("Competizione resettata!")
+        return
