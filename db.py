@@ -18,6 +18,7 @@ class Database():
         self.user_image = "USER_IMAGE"
         self.COMPETITION = "COMPETITION"
         self.QUEUE = "QUEUE"
+        self.MEMBER = "MEMBER"
 
         self.total_token = 'total_token'
         self.post_id = "post_id"
@@ -26,6 +27,7 @@ class Database():
         self.vote = "user_vote"       
         self.datetime = "datetime"
         self.table_queue = "queue"
+        self.joined = "joined"
 
         self.total_token = "token" 
     pass
@@ -37,6 +39,7 @@ class Database():
         self.c.execute(f'''CREATE TABLE IF NOT EXISTS {self.user_image} ({self.post_id} INTEGER PRIMARY KEY, {self.user_id} INTEGER)''')
         self.c.execute(f'''CREATE TABLE IF NOT EXISTS {self.COMPETITION} ({self.user_id} INTEGER PRIMARY KEY, {self.post_id} INTEGER, {self.datetime} TEXT)''')
         self.c.execute(f'''CREATE TABLE IF NOT EXISTS {self.QUEUE} ({self.user_id} INTEGER PRIMARY KEY, {self.datetime} TEXT)''')
+        self.c.execute(f'''CREATE TABLE IF NOT EXISTS {self.MEMBER} ({self.user_id} INTEGER PRIMARY KEY, {self.joined} BOOL)''')
         self.conn.commit()
 
     def insert_queue(self, user_id, datetime):
@@ -61,8 +64,20 @@ class Database():
         self.c.execute(f"INSERT OR REPLACE INTO {self.user_info} ({self.user_id}, {self.username}) VALUES (?, ?)", (user_id, username))
         self.conn.commit()
 
+    
     def get_user_data(self, user_id):
         self.c.execute(f'''SELECT {self.user_id} FROM {self.user_info} WHERE {self.user_id} = ?''', (user_id,))
+        result = self.c.fetchone()
+        self.conn.commit()
+        
+        return result[0] if result else (None)
+    
+    def insert_member(self, user_id, joined):
+        self.c.execute(f"INSERT INTO {self.MEMBER} ({self.user_id}, {self.joined}) VALUES (?, ?)", (user_id, joined))
+        self.conn.commit()
+
+    def get_member(self, user_id):
+        self.c.execute(f'''SELECT {self.user_id} FROM {self.MEMBER} WHERE {self.user_id} = ?''', (user_id,))
         result = self.c.fetchone()
         self.conn.commit()
         
@@ -133,8 +148,8 @@ class Database():
     def calculate_average_votes(self):
         query = f"""
                 SELECT {self.table_vote}.{self.post_id}, 
-                    SUM({self.table_vote}.{self.vote}), 
-                    COUNT({self.table_vote}.{self.vote}) 
+                    SUM({self.table_vote}.{self.vote}) as total_votes, 
+                    COUNT({self.table_vote}.{self.vote}) as num_votes
                 FROM {self.table_vote}
                 JOIN {self.COMPETITION} ON {self.table_vote}.{self.post_id} = {self.COMPETITION}.{self.post_id}
                 GROUP BY {self.table_vote}.{self.post_id}
@@ -149,7 +164,10 @@ class Database():
             total_votes = result[1]
             num_votes = result[2]
             average_vote = total_votes / num_votes
-            averages.append((post_id, average_vote))
+            averages.append((post_id, average_vote, num_votes))
+
+        # Ordina per punteggio medio e numero di voti
+        averages.sort(key=lambda x: (x[1], x[2]), reverse=True)
 
         return averages
     
@@ -198,5 +216,3 @@ class Database():
         self.ctok.execute(f"INSERT OR REPLACE INTO {self.PAYER} ({self.user_id}, {self.total_token}) VALUES (?, ?)", (user_id, total_token))
         #self.ctok.execute(f'''UPDATE {self.PAYER} SET {self.total_token} = ? WHERE {self.user_id} = ?''', (total_token, user_id))
         self.token.commit()
-
-
