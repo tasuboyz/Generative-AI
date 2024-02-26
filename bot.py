@@ -67,27 +67,31 @@ class BOT():
         language_code = info.language
         first_name = info.first_name
         referral = info.text
+        db = Database()
         status = await info.get_user_member(user_id, self.bot)
         try:              
             parti = referral.split()
-            total_token = Database().user_token(user_id)
+            total_token = db.user_token(user_id)
             keyboard = Keyboard_Manager().reply_add_token()
-            user = Database().get_user_data(user_id)
+            user = db.get_user_data(user_id)
             if user == None:
                 if len(parti) > 1:
                     id_win_token = parti[1]  
-                    total_token = Database().user_token(id_win_token)
+                    total_token = db.user_token(id_win_token)
                     total_token = total_token + 3
-                    Database().update_user_token(total_token, id_win_token)
+                    db.update_user_token(total_token, id_win_token)
                     your_friend_joined = Language().your_friend_joined(language_code)
                     await self.bot.send_message(id_win_token, your_friend_joined)
-                total_token += 1
-                Database().update_user_token(total_token, user_id)
+                total_token += 0
+                db.update_user_token(total_token, user_id)
                 
-                if status == 'member' or status == 'creator':    
+            if status == 'member' or status == 'creator':
+                new_member = db.get_member(user_id)
+                if new_member == None:
                     total_token = total_token + 2
-                    Database().update_user_token(total_token, user_id)
-            Database().insert_user_data(user_id, username)                 
+                    db.insert_member(user_id, True)
+                    db.update_user_token(total_token, user_id)
+            db.insert_user_data(user_id, username)                 
             
             text = Language().welcame(language_code, first_name, total_token)
             await message.answer(text, reply_markup=keyboard)
@@ -137,7 +141,8 @@ class BOT():
                 not_token = Language().have_not_token(language_code)
                 await message.reply(not_token, reply_markup=keyboard)
                 image_url = False
-            await self.bot.delete_message(chat_id, message_wait.message_id) 
+            if image_url:
+                await self.bot.delete_message(chat_id, message_wait.message_id) 
         except Exception as ex:
             error_occurred = Language().error_generation(language_code)
             await message.reply(error_occurred)
