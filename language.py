@@ -6,59 +6,85 @@ class Language:
         pass
 
     def welcame(self, language_code, first_name, total_token):
-        channel = f'<a href="https://t.me/{self.channel_username}">👇</a>'
+        channel = f'<a href="https://t.me/tasu_Channel">Tasuboyz</a>'
         eng = (f"\nHello {first_name} 👋, send me a prompt to generate an image!""\n""\nI recommend sending short and simple prompts for better images.""\n"
-                    "\nRemember, 1🪙 Token equals one image.""\n""\nTo get new tokens you can:""\n1️⃣ Vote for 10 images for 1 🪙""\n2️⃣ Invite a friend for 3 🪙""\n3️⃣ Win contests to get 20 🪙\n4️⃣Members of the channel https://t.me/tasu_Channel will have +2 🪙"
+                    "\n🔹Dall-E 3 = 2🪙 \n🔹Leonardo AI(no Alchemy or PhotoReal) = 1🪙""\n""\nTo get new tokens you can:""\n1️⃣ Vote for 10 images for 1 🪙 @tasu_openai_result""\n2️⃣ Invite a friend for 3 🪙"f"\n3️⃣ Win contests to get 20 🪙\n4️⃣Members of the channel {channel} will have +2 🪙"
                     "\n🛒 Purchase Tokens""\n""\n🥇 Win the contest to get new tokens! Contests last for a week, and you can submit only one image."f"\n🪙 Tokens: {total_token}"
-                    "\n@tasu_openai_result")
+                    "\n")
         if language_code == 'it':
-            message = (f"\nCiao {first_name} 👋, inviami un prompt per generare un'immagine!""\n""\nTi consiglio di inviare prompt brevi e non complessi per creare immagini migliori.""\n"
-                    "\nRicorda che 1🪙 Token è un'immagine.""\n""\nPer ottenere nuovi token puoi:""\n1️⃣ Votare 10 immagini per 1 🪙""\n2️⃣ Invitare un amico per 3 🪙""\n3️⃣ Vincere i concorsi per ottenere 20 🪙\n4️⃣I membri del canale https://t.me/tasu_Channel avranno + 2 🪙"
+            message = (f"\nCiao {first_name} 👋, inviami un prompt per generare un'immagine!""\n"
+                    "\n🔹Dall-E 3 = 2🪙 \n🔹Leonardo AI(no Alchemy or PhotoReal) = 1🪙""\n""\nPer ottenere nuovi token puoi:""\n1️⃣ Votare 10 immagini per 1 🪙 su @tasu_openai_result""\n2️⃣ Invitare un amico per 3 🪙"f"\n3️⃣ Vincere i concorsi per ottenere 20 🪙\n4️⃣I membri del canale {channel} avranno + 2 🪙"
                     "\n🛒 Acquistare i Token""\n""\n🥇 Vinci il concorso per ottenere nuovi token! I concorsi durano una settimana e puoi inviare una sola immagine."f"\n🪙 Token: {total_token}"
-                    "\n@tasu_openai_result")
+                    "\n")
         elif language_code == 'en':
             message = eng
         elif language_code == 'hi':
             message = (f"नमस्ते {first_name} 👋, मुझे एक प्रॉम्प्ट भेजें ताकि मैं एक छवि उत्पन्न कर सकूं!""\n""\nबेहतर छवियों के लिए छोटे और सरल प्रॉम्प्ट भेजने की सिफारिश की जाती है।""\n"
-                    "\nध्यान दें, 1🪙 टोकन एक छवि के बराबर है।""\n""\nनए टोकन प्राप्त करने के लिए आप:""\n1️⃣ 1 🪙 के लिए 10 छवियों के लिए वोट करें""\n2️⃣ 3 🪙 के लिए एक दोस्त को आमंत्रित करें""\n3️⃣ 20 🪙 प्राप्त करने के लिए प्रतियोगिताओं को जीतें\n4️⃣ https://t.me/tasu_Channel चैनल के सदस्यों को +2 🪙"
+                    "\nध्यान दें, 1🪙 टोकन एक छवि के बराबर है।""\n""\nनए टोकन प्राप्त करने के लिए आप:""\n1️⃣ 1 🪙 के लिए 10 छवियों के लिए वोट करें""\n2️⃣ 3 🪙 के लिए एक दोस्त को आमंत्रित करें"f"\n3️⃣ 20 🪙 प्राप्त करने के लिए प्रतियोगिताओं को जीतें\n4️⃣ {channel} चैनल के सदस्यों को +2 🪙"
                     "\n🛒 टोकन खरीदें""\n""\n🥇 नए टोकन प्राप्त करने के लिए प्रतियोगिता जीतें! प्रतियोगिताएँ एक सप्ताह तक चलती हैं, और आप केवल एक छवि सबमिट कर सकते हैं।"f"\n🪙 टोकन: {total_token}"
                     "\n@tasu_openai_result")
         elif language_code == 'es':
             message = (f"Hola {first_name} 👋, ¡envíame un prompt para generar una imagen!""\n""\nTe recomiendo enviar prompts cortos y simples para obtener mejores imágenes.""\n"
-                    "\nRecuerda, 1🪙 Token equivale a una imagen.""\n""\nPara obtener nuevos tokens puedes:""\n1️⃣ Votar por 10 imágenes por 1 🪙""\n2️⃣ Invitar a un amigo por 3 🪙""\n3️⃣ Ganar concursos para obtener 20 🪙\n4️⃣Los miembros del canal https://t.me/tasu_Channel tendrán +2 🪙"
+                    "\n🔹Dall-E 3 = 2🪙 \n🔹Leonardo AI(no Alchemy or PhotoReal) = 1🪙""\n""\nPara obtener nuevos tokens puedes:""\n1️⃣ Votar por 10 imágenes por 1 🪙""\n2️⃣ Invitar a un amigo por 3 🪙"f"\n3️⃣ Ganar concursos para obtener 20 🪙\n4️⃣Los miembros del canal {channel} tendrán +2 🪙"
                     "\n🛒 Comprar Tokens""\n""\n🥇 ¡Gana el concurso para obtener nuevos tokens! Los concursos duran una semana y solo puedes enviar una imagen."f"\n🪙 Tokens: {total_token}"
                     "\n@tasu_openai_result")
         elif language_code == 'fr':
             message = (f"Bonjour {first_name} 👋, envoyez-moi un prompt pour générer une image!""\n""\nJe recommande d'envoyer des prompts courts et simples pour de meilleures images.""\n"
-                    "\nRappelez-vous, 1🪙 Token équivaut à une image.""\n""\nPour obtenir de nouveaux jetons, vous pouvez :""\n1️⃣ Voter pour 10 images pour 1 🪙""\n2️⃣ Inviter un ami pour 3 🪙""\n3️⃣ Gagner des concours pour obtenir 20 🪙\n4️⃣Les membres du canal https://t.me/tasu_Channel auront +2 🪙"
+                    "\n🔹Dall-E 3 = 2🪙 \n🔹Leonardo AI(no Alchemy or PhotoReal) = 1🪙""\n""\nPour obtenir de nouveaux jetons, vous pouvez :""\n1️⃣ Voter pour 10 images pour 1 🪙""\n2️⃣ Inviter un ami pour 3 🪙"f"\n3️⃣ Gagner des concours pour obtenir 20 🪙\n4️⃣Les membres du canal {channel} auront +2 🪙"
                     "\n🛒 Acheter des jetons""\n""\n🥇 Gagnez le concours pour obtenir de nouveaux jetons ! Les concours durent une semaine et vous ne pouvez soumettre qu'une seule image."f"\n🪙 Jetons : {total_token}"
                     "\n@tasu_openai_result")
         elif language_code == 'de':
             message = (f"Hallo {first_name} 👋, sende mir einen Prompt, um ein Bild zu generieren!""\n""\nIch empfehle, kurze und einfache Prompts für bessere Bilder zu senden.""\n"
-                    "\nDenke daran, 1🪙 Token entspricht einem Bild.""\n""\nUm neue Tokens zu erhalten, kannst du:""\n1️⃣ Für 1 🪙 10 Bilder abstimmen""\n2️⃣ Einen Freund für 3 🪙 einladen""\n3️⃣ Gewinne Wettbewerbe, um 20 🪙 zu erhalten\4️⃣Mitglieder des Kanals https://t.me/tasu_Channel erhalten +2 🪙"
+                    "\n🔹Dall-E 3 = 2🪙 \n🔹Leonardo AI(no Alchemy or PhotoReal) = 1🪙""\n""\nUm neue Tokens zu erhalten, kannst du:""\n1️⃣ Für 1 🪙 10 Bilder abstimmen""\n2️⃣ Einen Freund für 3 🪙 einladen"f"\n3️⃣ Gewinne Wettbewerbe, um 20 🪙 zu erhalten\4️⃣Mitglieder des Kanals https://t.me/tasu_Channel erhalten +2 🪙"
                     "\n🛒 Tokens kaufen""\n""\n🥇 Gewinne den Wettbewerb, um neue Tokens zu erhalten! Wettbewerbe dauern eine Woche, und du kannst nur ein Bild einreichen."f"\n🪙 Tokens: {total_token}"
                     "\n@tasu_openai_result")
         elif language_code == 'ru':
             message = (f"Привет {first_name} 👋, отправь мне подсказку, чтобы создать изображение!""\n""\nЯ рекомендую отправлять короткие и простые подсказки для лучших изображений.""\n"
-                    "\nПомни, что 1🪙 Токен равен одному изображению.""\n""\nЧтобы получить новые токены, ты можешь:""\n1️⃣ Проголосовать за 10 изображений за 1 🪙""\n2️⃣ Пригласить друга за 3 🪙""\n3️⃣ Выиграть конкурсы, чтобы получить 20 🪙\n4️⃣Участники канала https://t.me/tasu_Channel получат +2 🪙"
+                    "\n🔹Dall-E 3 = 2🪙 \n🔹Leonardo AI (без алхимии и фотореала) = 1🪙""\n""\nЧтобы получить новые токены, ты можешь:""\n1️⃣ Проголосовать за 10 изображений за 1 🪙""\n2️⃣ Пригласить друга за 3 🪙"f"\n3️⃣ Выиграть конкурсы, чтобы получить 20 🪙\n4️⃣Участники канала {channel} получат +2 🪙"
                     "\n🛒 Купить Токены""\n""\n🥇 Выиграйте конкурс, чтобы получить новые токены! Конкурсы длится неделю, и вы можете отправить только одно изображение."f"\n🪙 Токены: {total_token}"
                     "\n@tasu_openai_result")
         elif language_code == 'uk':
             message = (f"Привіт {first_name} 👋, надішліть мені запит, щоб створити зображення!""\n""\nЯ рекомендую надсилати короткі та прості запити для кращих зображень.""\n"
-                    "\nЗапам'ятайте, що 1🪙 Токен дорівнює одному зображенню.""\n""\nЩоб отримати нові токени, ви можете:""\n1️⃣ Проголосувати за 10 зображень за 1 🪙""\n2️⃣ Запросити друга за 3 🪙""\n3️⃣ Вигравати конкурси, щоб отримати 20 🪙\n4️⃣Учасники каналу https://t.me/tasu_Channel отримають +2 🪙"
+                    "\n🔹Dall-E 3 = 2🪙 \n🔹Leonardo AI(no Alchemy or PhotoReal) = 1🪙""\n""\nЩоб отримати нові токени, ви можете:""\n1️⃣ Проголосувати за 10 зображень за 1 🪙""\n2️⃣ Запросити друга за 3 🪙"f"\n3️⃣ Вигравати конкурси, щоб отримати 20 🪙\n4️⃣Учасники каналу {channel} отримають +2 🪙"
                     "\n🛒 Купити Токени""\n""\n🥇 Виграйте конкурс, щоб отримати нові токени! Конкурси тривають тиждень, і ви можете надіслати лише одне зображення."f"\n🪙 Токени: {total_token}"
                     "\n@tasu_openai_result")
         elif language_code == 'zh':
             message = (f"你好 {first_name} 👋，发送一个提示给我生成一张图片吧！""\n""\n我建议您发送简短且简单的提示以获得更好的图片。""\n"
-                    "\n请记住，1🪙 代币等于一张图片。""\n""\n要获取新代币，您可以：""\n1️⃣ 为 1 🪙 投票 10 张图片""\n2️⃣ 邀请一个朋友来 3 🪙""\n3️⃣ 赢得比赛获得 20 🪙\n4️⃣频道 https://t.me/tasu_Channel 的成员将额外获得 +2 🪙"
+                    "\n🔹Dall-E 3 = 2🪙 \n🔹Leonardo AI（无 Alchemy 或 PhotoReal = 1🪙""\n""\n要获取新代币，您可以：""\n1️⃣ 为 1 🪙 投票 10 张图片""\n2️⃣ 邀请一个朋友来 3 🪙"f"\n3️⃣ 赢得比赛获得 20 🪙\n4️⃣频道 {channel} 的成员将额外获得 +2 🪙"
                     "\n🛒 购买代币""\n""\n🥇 赢得比赛获得新代币！比赛持续一周，您只能提交一张图片。"f"\n🪙 代币: {total_token}"
                     "\n@tasu_openai_result")
         elif language_code == 'ar':
             message = (f"مرحبًا {first_name} 👋، أرسل لي موجِّهًا لإنشاء صورة!""\n""\nأوصي بإرسال موجِّهات قصيرة وبسيطة للحصول على صور أفضل.""\n"
-                    "\nتذكّر، 1🪙 توكن يُعادل صورة واحدة.""\n""\nللحصول على توكنات جديدة يمكنك:""\n1️⃣ التصويت على 10 صور مقابل 1 🪙""\n2️⃣ دعوة صديق للحصول على 3 🪙""\n3️⃣ الفوز في المسابقات للحصول على 20 🪙\n4️⃣ سيحصل أعضاء القناة https://t.me/tasu_Channel على +2 🪙 إضافية"
+                    "\n🔹دال-إي 3 = 2🔹🔹ليوناردو AI (بدون كيمياء أو فوتو ريال) = 1🔹""\n""\nللحصول على توكنات جديدة يمكنك:""\n1️⃣ التصويت على 10 صور مقابل 1 🪙""\n2️⃣ دعوة صديق للحصول على 3 🪙"f"\n3️⃣ الفوز في المسابقات للحصول على 20 🪙\n4️⃣ سيحصل أعضاء القناة {channel} على +2 🪙 إضافية"
                     "\n🛒 شراء التوكنات""\n""\n🥇 اربح المسابقة للحصول على توكنات جديدة! تستمر المسابقات لمدة أسبوع، ويمكنك تقديم صورة واحدة فقط."f"\n🪙 التوكنات: {total_token}"
                     "\n@tasu_openai_result")
         else:       
+            message = eng
+        return message
+    
+    def welcame_vip(self, language_code, first_name):
+        eng = (f'''You have already voted for this!''')
+        if language_code == 'it':
+            message = f'''{first_name} Benvenuto Membro Vip💎👋\n Grazie per il tuo sostegno'''
+        elif language_code == 'en':
+            message = eng
+        elif language_code == 'hi':
+            message = (f'''आपने पहले से ही इसके लिए वोट किया है!''')
+        elif language_code == 'es':
+            message = (f'''¡Ya has votado por esto!''')
+        elif language_code == 'fr':
+            message = (f'''Vous avez déjà voté pour cela !''')
+        elif language_code == 'de':
+            message = (f'''Du hast bereits dafür abgestimmt!''')
+        elif language_code == 'ru':
+            message = (f'''Вы уже проголосовали за это!''')
+        elif language_code == 'uk':
+            message = (f'''Ви вже голосували за це!''')
+        elif language_code == 'zh':
+            message = (f'''您已经为此投过票了！''')
+        elif language_code == 'ar':
+            message = (f'''لقد صوتت بالفعل لهذا!''')
+        else:
             message = eng
         return message
         
@@ -357,7 +383,7 @@ class Language:
         elif language_code == 'uk':
             message = f"Конкурс закінчується {estimated_time}, до цього часу ви не можете надсилати інші зображення.\nБажаєте продовжити?"
         elif language_code == 'zh':
-            message = f"比赛截止日期为{estimated_time}，在此之前您将无法发送更多图片。\n您要继续吗？"
+            message = f"比赛截止日期为 {estimated_time}，在此之前您将无法发送更多图片。\n您要继续吗？"
         elif language_code == 'ar':
             message = f"ينتهي المسابقة في {estimated_time}، حتى ذلك الوقت لن تتمكن من إرسال المزيد من الصور.\nهل ترغب في الاستمرار؟"
         else:
@@ -389,7 +415,6 @@ class Language:
         else:
             message = eng
         return message
-
     
     def yes(self, language_code):
         eng = f"Yes ✅"
@@ -468,3 +493,164 @@ class Language:
         else:
             message = eng
         return message
+    
+    def vote_changed(self, language_code):
+        eng = f"Vote changed 👍"
+        if language_code == 'it':
+            message = f"Voto modificato 👍"
+        elif language_code == 'en':
+            message = eng
+        elif language_code == 'hi':
+            message = f"मत बदल गया 👍"
+        elif language_code == 'es':
+            message = f"Voto cambiado 👍"
+        elif language_code == 'fr':
+            message = f"Vote changé 👍"
+        elif language_code == 'de':
+            message = f"Stimme geändert 👍"
+        elif language_code == 'ru':
+            message = f"Голос изменен 👍"
+        elif language_code == 'uk':
+            message = f"Голос змінено 👍"
+        elif language_code == 'zh':
+            message = f"投票已更改 👍"
+        elif language_code == 'ar':
+            message = f"تم تغيير الصوت 👍"
+        else:
+            message = eng
+        return message
+    
+    def wait_to_vote(self, language_code):
+        eng = f"Wait a moment before voting again ⏰"
+        if language_code == 'it':
+            message = f"aspetta un pò prima di votare di nuovo ⏰"
+        elif language_code == 'en':
+            message = eng
+        elif language_code == 'hi':
+            message = f"फिर से वोट करने से पहले एक क्षण प्रतीक्षा करें ⏰"
+        elif language_code == 'es':
+            message = f"Espera un momento antes de votar de nuevo ⏰"
+        elif language_code == 'fr':
+            message = f"Attendez un moment avant de voter à nouveau ⏰"
+        elif language_code == 'de':
+            message = f"Warten Sie einen Moment, bevor Sie erneut abstimmen ⏰"
+        elif language_code == 'ru':
+            message = f"Подождите немного перед тем, как голосовать снова ⏰"
+        elif language_code == 'uk':
+            message = f"Зачекайте хвилину перед тим, як голосувати знову ⏰"
+        elif language_code == 'zh':
+            message = f"再次投票之前请稍等片刻 ⏰"
+        elif language_code == 'ar':
+            message = f"انتظر لحظة قبل التصويت مرة أخرى ⏰"
+        else:
+            message = eng
+        return message
+
+    def wait_for_set(self, language_code):
+        eng = "Please wait a moment for the change ⏰"
+        if language_code == 'it':
+            message = "Attendi un momento per la modifica ⏰"
+        elif language_code == 'en':
+            message = eng
+        elif language_code == 'hi':
+            message = "कृपया संपादन के लिए कुछ समय प्रतीक्षा करें ⏰"
+        elif language_code == 'es':
+            message = "Espera un momento para la edición ⏰"
+        elif language_code == 'fr':
+            message = "Veuillez patienter pour la modification ⏰"
+        elif language_code == 'de':
+            message = "Bitte warten Sie einen Moment auf die Bearbeitung ⏰"
+        elif language_code == 'ru':
+            message = "Подождите немного для изменений ⏰"
+        elif language_code == 'uk':
+            message = "Зачекайте трохи для змін ⏰"
+        elif language_code == 'zh':
+            message = "请稍等片刻进行编辑 ⏰"
+        elif language_code == 'ar':
+            message = "انتظر لحظة للتعديل ⏰"
+        else:
+            message = eng
+        return message    
+    
+    def user_not_payed(self, language_code):
+        channel = f'<a href="https://t.me/TasuPremiumBot">👇💎</a>'
+        eng = f"Sorry, at the moment, the system tokens are only sufficient for VIP members. Purchase the premium pack to guarantee lifetime access! {channel}"
+        if language_code == 'it':
+            message = f"Spiacente, al momento i token del sistema sono sufficienti solo per i membri VIP. Acquista il pacchetto premium per garantirti l'accesso a vita! {channel}"
+        elif language_code == 'en':
+            message = eng
+        elif language_code == 'hi':
+            message = f"माफ़ कीजिए, इस समय सिस्टम टोकन केवल वीआईपी सदस्यों के लिए पर्याप्त हैं। लाइफ़टाइम एक्सेस सुनिश्चित करने के लिए प्रीमियम पैक खरीदें! {channel}"
+        elif language_code == 'es':
+            message = f"Lo siento, en este momento los tokens del sistema solo son suficientes para los miembros VIP. ¡Compra el paquete premium para garantizar el acceso de por vida! {channel}"
+        elif language_code == 'fr':
+            message = f"Désolé, pour l'instant, les jetons du système sont uniquement suffisants pour les membres VIP. Achetez le pack premium pour garantir un accès à vie ! {channel}"
+        elif language_code == 'de':
+            message = f"Tut uns leid, im Moment reichen die System-Token nur für VIP-Mitglieder aus. Kaufe das Premium-Paket, um lebenslangen Zugang zu garantieren! {channel}"
+        elif language_code == 'ru':
+            message = f"Извините, в данный момент токенов в системе достаточно только для VIP-пользователей. Приобретите премиум-пакет, чтобы гарантировать пожизненный доступ! {channel}"
+        elif language_code == 'uk':
+            message = f"Вибачте, на даний момент токени системи достатні лише для учасників VIP. Придбайте преміум-пакет, щоб забезпечити доступ на все життя! {channel}"
+        elif language_code == 'zh':
+            message = f"抱歉，目前系统代币仅足够VIP会员使用。购买高级套餐，确保终身访问！ {channel}"
+        elif language_code == 'ar':
+            message = f"عذرًا، في الوقت الحالي، تكون الرموز النظامية كافية فقط لأعضاء الفي آي بي. اشترِ الحزمة الرئيسية لضمان الوصول مدى الحياة! {channel}"
+        else:
+            message = eng
+        return message
+    
+    def language_setted(self, language_code):
+        eng = f"Language setted 🇬🇧"
+        if language_code == 'it':
+            message = f"Lingua impostata 🇮🇹"
+        elif language_code == 'en':
+            message = eng
+        elif language_code == 'hi':
+            message = f"भाषा सेट की गई 🇮🇳"
+        elif language_code == 'es':
+            message = f"Idioma establecido 🇪🇸"
+        elif language_code == 'fr':
+            message = f"Langue définie 🇫🇷"
+        elif language_code == 'de':
+            message = f"Sprache festgelegt 🇩🇪"
+        elif language_code == 'ru':
+            message = f"Установлен язык 🇷🇺"
+        elif language_code == 'uk':
+            message = f"Мова встановлена 🇺🇦"
+        elif language_code == 'zh':
+            message = f"语言已设置 🇨🇳"
+        elif language_code == 'ar':
+            message = f"تم تعيين اللغة 🇸🇦"
+        else:
+            message = eng
+        return message
+    
+    def buy_token(self, language_code):
+        buy = "🛒"
+        eng = f"Buy Token {buy}"
+        if language_code == 'it':
+            message = f"Acquista Token {buy}"
+        elif language_code == 'en':
+            message = eng
+        elif language_code == 'hi':
+            message = f"टोकन खरीदें {buy}"
+        elif language_code == 'es':
+            message = f"Comprar Token {buy}"
+        elif language_code == 'fr':
+            message = f"Acheter des jetons {buy}"
+        elif language_code == 'de':
+            message = f"Token kaufen {buy}"
+        elif language_code == 'ru':
+            message = f"Купить токен {buy}"
+        elif language_code == 'uk':
+            message = f"Купити токен {buy}"
+        elif language_code == 'zh':
+            message = f"购买代币 {buy}"
+        elif language_code == 'ar':
+            message = f"شراء الرمز {buy}"
+        else:
+            message = eng
+        return message
+
+
+

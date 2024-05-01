@@ -7,6 +7,7 @@ from language import Language
 class Keyboard_Manager:
     def __init__(self):
         self.url = 'https://t.me/TasuPremiumBot'
+        self.model_list_konyconi = ['Anime Pastel Dream', 'DreamSharper v7', 'Absolute Reality v1.6', '3D Animation Style', 'Stable Diffusion 1.5', 'Stable Diffusion 2.1']
         self.language = Language()
 
     def buy_inline_keyboard(self, message=None):
@@ -63,10 +64,15 @@ class Keyboard_Manager:
         keyboard = InlineKeyboardMarkup(inline_keyboard=keyboard)
         return keyboard
     
-    def reply_add_token(self):
+    def reply_add_token(self, leonardo=False):
+        on = '✅'
+        off = '🚫'
+        on_off_leonardo = on if leonardo else off
         keyboard = []
-        keyboard.append([InlineKeyboardButton(text="About Token 💎", callback_data="token")])
+        keyboard.append([InlineKeyboardButton(text="About Token 🪙", callback_data="token")])
+        keyboard.append([InlineKeyboardButton(text="Language Setting ⚙️", callback_data="setting")])
         keyboard.append([InlineKeyboardButton(text="Buy Premium Pack ⭐️", url=self.url)])
+        keyboard.append([InlineKeyboardButton(text=f"Leonardo AI (Vip💎) {on_off_leonardo}",  callback_data="leonardo")])
         keyboard = InlineKeyboardMarkup(inline_keyboard=keyboard)
         return keyboard
     
@@ -79,10 +85,95 @@ class Keyboard_Manager:
         keyboard = InlineKeyboardMarkup(inline_keyboard=keyboard)
         return keyboard
     
-    def admin_keyboard(self):
+    def admin_keyboard(self, enable=False):
+        on_off_enable = "✅" if enable else "🚫"
         keyboard = []
         keyboard.append([InlineKeyboardButton(text="number user", callback_data="user_number"),
                          InlineKeyboardButton(text="give to user", callback_data="give_to_user")])
-        keyboard.append([InlineKeyboardButton(text="Reset competition", callback_data="reset_competition")])
+        keyboard.append([InlineKeyboardButton(text="Reset competition", callback_data="reset_competition"),
+                         InlineKeyboardButton(text="Send Ads", callback_data="ads")])
+        keyboard.append([InlineKeyboardButton(text=f"Enabled {on_off_enable}", callback_data="enable")])
+        keyboard.append([InlineKeyboardButton(text="Cancel ❌", callback_data="cancel")])    
         keyboard = InlineKeyboardMarkup(inline_keyboard=keyboard)
         return keyboard
+    
+    def custom_keyboard(self, alchemy=None, photoreal=None, model_name=None, size=None):
+        on_alchemy = 'Alchemy V2 🧪✅'
+        off_alchemy = 'Alchemy V2 🧪🚫(2🪙)'
+        on_photoreal = 'PhotoReal V2 📸✅'
+        off_photoreal = 'PhotoReal V2 📸🚫(2🪙)'
+        on_off_alchemy = on_alchemy if alchemy else off_alchemy
+        on_off_photoreal = on_photoreal if photoreal else off_photoreal
+        keyboard_buttons = []
+        keyboard_buttons.append([InlineKeyboardButton(text=on_off_alchemy, callback_data="alchemy"),
+                                 InlineKeyboardButton(text=on_off_photoreal, callback_data="photoreal")])
+        if model_name in self.model_list_konyconi:
+            keyboard_buttons.append([InlineKeyboardButton(text="Element ⚡️", switch_inline_query_current_chat='element a'),
+                                     InlineKeyboardButton(text="Model 🤖", switch_inline_query_current_chat='model')])
+        elif photoreal:
+            keyboard_buttons.append([InlineKeyboardButton(text="Element ⚡️", switch_inline_query_current_chat='element b'),
+                                     InlineKeyboardButton(text="Model 🤖", switch_inline_query_current_chat='photoreal_model')])
+        else:
+            keyboard_buttons.append([InlineKeyboardButton(text="Element ⚡️", switch_inline_query_current_chat='element b'),
+                                     InlineKeyboardButton(text="Model 🤖", switch_inline_query_current_chat='all_model')])
+        keyboard_buttons.append([InlineKeyboardButton(text=f"Size {size}", callback_data="size")])
+        keyboard_buttons.append([InlineKeyboardButton(text="Confirm ✅", callback_data="confirm")])
+        keyboard_buttons.append([InlineKeyboardButton(text="Cancel ❌", callback_data="cancel_leonardo")])
+        keyboard = InlineKeyboardMarkup(inline_keyboard=keyboard_buttons)
+        return keyboard
+    
+    def custom_elements(self):
+        keyboard_buttons = []
+        keyboard_buttons.append([InlineKeyboardButton(text="0.1", callback_data="0.1"),
+                                 InlineKeyboardButton(text="0.2", callback_data="0.2"),
+                                 InlineKeyboardButton(text="0.3", callback_data="0.3"),
+                                 InlineKeyboardButton(text="0.4", callback_data="0.4"),
+                                 InlineKeyboardButton(text="0.5", callback_data="0.5")])
+        keyboard_buttons.append([InlineKeyboardButton(text="0.6", callback_data="0.6"),
+                                 InlineKeyboardButton(text="0.7", callback_data="0.7"),
+                                 InlineKeyboardButton(text="0.8", callback_data="0.8"),
+                                 InlineKeyboardButton(text="0.9", callback_data="0.9"),
+                                 InlineKeyboardButton(text="1", callback_data="1")])
+        keyboard_buttons.append([InlineKeyboardButton(text="-0.1", callback_data="-0.1"),
+                                 InlineKeyboardButton(text="-0.2", callback_data="-0.2"),
+                                 InlineKeyboardButton(text="-0.3", callback_data="-0.3"),
+                                 InlineKeyboardButton(text="-0.4", callback_data="-0.4"),
+                                 InlineKeyboardButton(text="-0.5", callback_data="-0.5")])
+        keyboard_buttons.append([InlineKeyboardButton(text="-0.6", callback_data="-0.6"),
+                                 InlineKeyboardButton(text="-0.7", callback_data="-0.7"),
+                                 InlineKeyboardButton(text="-0.8", callback_data="-0.8"),
+                                 InlineKeyboardButton(text="-0.9", callback_data="-0.9"),
+                                 InlineKeyboardButton(text="-1", callback_data="-1")])
+        keyboard_buttons.append([InlineKeyboardButton(text="Cancel ❌", callback_data="cancel_element")])
+        keyboard = InlineKeyboardMarkup(inline_keyboard=keyboard_buttons)
+        return keyboard
+    
+    def language_setting(self):
+        keyboard_buttons = []
+        keyboard_buttons.append([InlineKeyboardButton(text="Italiano 🇮🇹", callback_data="code:it"),
+                                 InlineKeyboardButton(text="Spanish 🇪🇦", callback_data="code:es"),
+                                 InlineKeyboardButton(text="भारतीय 🇮🇳", callback_data="code:hi")])
+        keyboard_buttons.append([InlineKeyboardButton(text="English 🇬🇧", callback_data="code:en"),
+                                 InlineKeyboardButton(text="Français 🇫🇷", callback_data="code:fr"),
+                                 InlineKeyboardButton(text="Deutsch 🇩🇪", callback_data="code:de")])
+        keyboard_buttons.append([InlineKeyboardButton(text="Русский 🇷🇺", callback_data="code:ru"),
+                                 InlineKeyboardButton(text="Українська 🇺🇦", callback_data="code:uk"),
+                                 InlineKeyboardButton(text="中文 🇨🇳", callback_data="code:zh")])
+        keyboard_buttons.append([InlineKeyboardButton(text="العربية🇸🇦", callback_data="code:ar")])
+        keyboard_buttons.append([InlineKeyboardButton(text="Cancel ❌", callback_data="cancel")])
+        keyboard = InlineKeyboardMarkup(inline_keyboard=keyboard_buttons)
+        return keyboard
+    
+    def image_size(self):
+        keyboard_buttons = []
+        keyboard_buttons.append([InlineKeyboardButton(text="512 × 768", callback_data="size:512x768"),
+                                 InlineKeyboardButton(text="768 × 512", callback_data="size:768x512"),
+                                 InlineKeyboardButton(text="1024 × 768", callback_data="size:1024x768")])
+        keyboard_buttons.append([InlineKeyboardButton(text="1360 × 768", callback_data="size:1360x768"),
+                                 InlineKeyboardButton(text="768 × 1360", callback_data="size:768x1360"),
+                                 InlineKeyboardButton(text="512 × 512", callback_data="size:512x512")])
+        keyboard_buttons.append([InlineKeyboardButton(text="Cancel ❌", callback_data="cancel")])
+        keyboard = InlineKeyboardMarkup(inline_keyboard=keyboard_buttons)
+        return keyboard
+    
+    

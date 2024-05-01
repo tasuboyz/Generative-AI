@@ -20,12 +20,22 @@ class Win_Check:
     async def win_check(self):
         db = Database()
         average_votes = db.calculate_average_votes()
-        winning_image_id = max(average_votes, key=lambda x: x[1])[0]
+
+        max_score = max(average_votes, key=lambda x: x[1])[1]
+
+        winning_posts = [post for post in average_votes if post[1] == max_score]
+
+        if len(winning_posts) > 1:
+            winning_image_id = max(winning_posts, key=lambda x: x[2])[0]
+        else:
+            winning_image_id = winning_posts[0][0]
+
         user_id = db.get_user_id_by_post(winning_image_id)
         input_file = FSInputFile("elmo-elmos-fire.gif")
         post_link = f'<a href="https://t.me/{self.channel_username}/{winning_image_id}">🎉</a>'
         await self.bot.send_animation(chat_id=user_id, animation=input_file, caption="🥇🥳🍾🎉🥂 Token: +20")
         await self.bot.send_message(user_id, post_link)
+        await self.bot.send_message(f"@{self.channel_username}", f"{post_link} Winner!")
         total_token = db.user_token(user_id)
         total_token = total_token + 20
         db.update_user_token(total_token, user_id)
@@ -44,7 +54,7 @@ class Win_Check:
                     if current_time >= end_time:
                         await self.win_check()
 
-                await asyncio.sleep(180)
+                await asyncio.sleep(10)
         except Exception as ex:
             logger.error(ex)
             await self.bot.send_message(self.admin_id, f"{ex}")
