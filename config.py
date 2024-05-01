@@ -2,7 +2,7 @@ import logging
 
 TOKEN = "" #
 
-admin_id = 1026795763
+admin_id = int("YOU_ID")
 
 api_base_url = 'http://localhost:8081'  
 
